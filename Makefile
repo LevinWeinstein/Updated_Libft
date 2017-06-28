@@ -21,15 +21,7 @@ all:
 
 innerall: $(LIBNAME)
 
-$(LIBNAME): $(OBJECTS)
-	@echo "\x1b[96m\t[\x1b[33m\x1b[4mLibft\x1b[24m\x1b[96m]:\x1b[32mLibft: Libft: Turning Objects Into Library"
-	@ar rc $(LIBNAME) $(OBJECTS)
-	@echo "\x1b[96m\t[\x1b[33m\x1b[4mLibft\x1b[24m\x1b[96m]:\x1b[21m\x1b[32mLibft: Optimizing... (ranlib)"
-	@ranlib $(LIBNAME)
-	@echo "\x1b[96m\t[\x1b[33m\x1b[4mLibft\x1b[24m\x1b[21m\x1b[96m]:\x1b[21m\x1b[32mLibft: libft.a Complete!"
-
-
-$(OBJECTS): $(SRCFILES)
+$(LIBNAME):
 	@echo "\x1b[96m\t[\x1b[33m\x1b[4mLibft\x1b[24m\x1b[96m]:\x1b[21m\x1b[32m Building Objects From Source\x1b[21m"
 	$(CC)  $(CFLAGS) $(CFILES) -I ./libft.h
 	@if test ! -f $(OBECTS); then\
@@ -37,6 +29,13 @@ $(OBJECTS): $(SRCFILES)
 	else \
 		echo "\x1b[96m\t[\x1b[33m\x1b[4mLibft\x1b[24m\x1b\x1b[96m]:\x1b[21m\x1b[32m Objects Compiled\x1b[21m"; \
 	fi
+	@echo "\x1b[96m\t[\x1b[33m\x1b[4mLibft\x1b[24m\x1b[96m]:\x1b[32mLibft: Libft: Turning Objects Into Library"
+	@ar rc $(LIBNAME) $(OBJECTS)
+	@echo "\x1b[96m\t[\x1b[33m\x1b[4mLibft\x1b[24m\x1b[96m]:\x1b[21m\x1b[32mLibft: Optimizing... (ranlib)"
+	@ranlib $(LIBNAME)
+	@echo "\x1b[96m\t[\x1b[33m\x1b[4mLibft\x1b[24m\x1b[21m\x1b[96m]:\x1b[21m\x1b[32mLibft: libft.a Complete!"
+
+
 
 clean: 	
 	@/bin/rm -f $(OBJECTS)
